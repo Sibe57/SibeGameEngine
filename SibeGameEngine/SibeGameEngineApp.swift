@@ -25,7 +25,7 @@ struct SibeGameEngineApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            BaseView()
         }
         .modelContainer(sharedModelContainer)
     }

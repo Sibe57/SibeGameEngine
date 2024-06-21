@@ -8,20 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		84183BE22C2613BF00B6D94F /* SibeGameEngineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84183BE12C2613BF00B6D94F /* SibeGameEngineApp.swift */; };
-		84183BE42C2613BF00B6D94F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84183BE32C2613BF00B6D94F /* ContentView.swift */; };
+		84183BE42C2613BF00B6D94F /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84183BE32C2613BF00B6D94F /* BaseView.swift */; };
 		84183BE62C2613BF00B6D94F /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84183BE52C2613BF00B6D94F /* Item.swift */; };
 		84183BE82C2613C000B6D94F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84183BE72C2613C000B6D94F /* Assets.xcassets */; };
 		84183BEB2C2613C000B6D94F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84183BEA2C2613C000B6D94F /* Preview Assets.xcassets */; };
+		84183BF32C2616C700B6D94F /* EngineRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84183BF22C2616C700B6D94F /* EngineRender.swift */; };
+		84183BF52C261C7100B6D94F /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = 84183BF42C261C7100B6D94F /* Shaders.metal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		84183BDE2C2613BF00B6D94F /* SibeGameEngine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SibeGameEngine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84183BE12C2613BF00B6D94F /* SibeGameEngineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SibeGameEngineApp.swift; sourceTree = "<group>"; };
-		84183BE32C2613BF00B6D94F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		84183BE32C2613BF00B6D94F /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		84183BE52C2613BF00B6D94F /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		84183BE72C2613C000B6D94F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84183BEA2C2613C000B6D94F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		84183BEC2C2613C000B6D94F /* SibeGameEngine.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SibeGameEngine.entitlements; sourceTree = "<group>"; };
+		84183BF22C2616C700B6D94F /* EngineRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineRender.swift; sourceTree = "<group>"; };
+		84183BF42C261C7100B6D94F /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +59,9 @@
 			isa = PBXGroup;
 			children = (
 				84183BE12C2613BF00B6D94F /* SibeGameEngineApp.swift */,
-				84183BE32C2613BF00B6D94F /* ContentView.swift */,
+				84183BF22C2616C700B6D94F /* EngineRender.swift */,
+				84183BE32C2613BF00B6D94F /* BaseView.swift */,
+				84183BF42C261C7100B6D94F /* Shaders.metal */,
 				84183BE52C2613BF00B6D94F /* Item.swift */,
 				84183BE72C2613C000B6D94F /* Assets.xcassets */,
 				84183BEC2C2613C000B6D94F /* SibeGameEngine.entitlements */,
@@ -142,9 +148,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84183BE42C2613BF00B6D94F /* ContentView.swift in Sources */,
+				84183BE42C2613BF00B6D94F /* BaseView.swift in Sources */,
 				84183BE62C2613BF00B6D94F /* Item.swift in Sources */,
 				84183BE22C2613BF00B6D94F /* SibeGameEngineApp.swift in Sources */,
+				84183BF32C2616C700B6D94F /* EngineRender.swift in Sources */,
+				84183BF52C261C7100B6D94F /* Shaders.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
