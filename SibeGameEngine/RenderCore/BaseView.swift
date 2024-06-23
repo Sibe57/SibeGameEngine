@@ -32,6 +32,7 @@ struct BaseView: NSViewRepresentable {
         
         mtkView.framebufferOnly = true
         mtkView.drawableSize = mtkView.frame.size
+        mtkView.isPaused = false
         
         return mtkView
     }

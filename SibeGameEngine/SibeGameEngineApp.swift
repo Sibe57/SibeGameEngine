@@ -25,8 +25,14 @@ struct SibeGameEngineApp: App {
 
     var body: some Scene {
         WindowGroup {
-            BaseView()
+            VStack {
+                BaseView()
+            }
+            .onAppear {
+                RootEventHandler.createEventHandlers()
+            }
         }
+        
         .modelContainer(sharedModelContainer)
     }
 }

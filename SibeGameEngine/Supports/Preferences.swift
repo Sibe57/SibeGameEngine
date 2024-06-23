@@ -33,5 +33,6 @@ class Preferences {
     
     static var mainPixelFormat: MTLPixelFormat = MTLPixelFormat.bgra8Unorm
     
+    static var startingSceneType: SceneManager.SceneType = .sandbox
     
 }

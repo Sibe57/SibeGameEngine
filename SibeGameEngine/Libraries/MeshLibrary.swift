@@ -71,13 +71,13 @@ final class TriangleMesh: CustomMesh {
 final class QuadMesh: CustomMesh {
     override func createVertexies() {
         self.vertexis = [
-            .init(position: .init(0.5, 0.5, 0), color: .init(0, 1, 1, 1)),
-            .init(position: .init(-0.5, 0.5, 0), color: .init(1, 1, 0, 1)),
-            .init(position: .init(-0.5, -0.5, 0), color: .init(1, 0, 1, 1)),
+            .init(position: .init(1, 1, 0), color: .init(0, 1, 1, 1)),
+            .init(position: .init(-1, 1, 0), color: .init(1, 1, 0, 1)),
+            .init(position: .init(-1, -1, 0), color: .init(1, 0, 1, 1)),
             
-            .init(position: .init(0.5, 0.5, 0), color: .init(0, 1, 1, 1)),
-            .init(position: .init(-0.5, -0.5, 0), color: .init(1, 0, 1, 1)),
-            .init(position: .init(0.5, -0.5, 0), color: .init(1, 1, 0, 1))
+            .init(position: .init(1, 1, 0), color: .init(0, 1, 1, 1)),
+            .init(position: .init(-1, -1, 0), color: .init(1, 0, 1, 1)),
+            .init(position: .init(1, -1, 0), color: .init(1, 1, 0, 1))
         ]
     }
 }

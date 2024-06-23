@@ -9,21 +9,13 @@ import MetalKit
 
 
 struct Vertex {
-    var position: SIMD3<Float>
-    var color: SIMD4<Float>
+    var position: Float3
+    var color: Float4
 }
 
 final class GameViewDelegate: NSObject, MTKViewDelegate {
-    
-    let parent: BaseView
-    var gameObjects: [Node] = .init()
-    
     init(_ parent: BaseView) {
         Engine.start()
-        
-        self.parent = parent
-        
-        gameObjects.append(Player())
         
         super.init()
     }
@@ -31,6 +23,7 @@ final class GameViewDelegate: NSObject, MTKViewDelegate {
     func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) { }
     
     func draw(in view: MTKView) {
+        firstVertexSet = true
         guard let drawable  = view.currentDrawable else { return }
         
         let commandBuffer = Engine.commandQueue.makeCommandBuffer()
@@ -38,10 +31,10 @@ final class GameViewDelegate: NSObject, MTKViewDelegate {
         let renderPassDescriptor = view.currentRenderPassDescriptor
         let renderEncoder = commandBuffer?.makeRenderCommandEncoder(descriptor: renderPassDescriptor!)
         
-        for gameObject in gameObjects {
-            gameObject.render(renderEncoder: renderEncoder!)
-        }
+        let deltaTime = Float(1) / Float(view.preferredFramesPerSecond)
         
+        SceneManager.tickScene(renderCommandEncoder: renderEncoder!, deltaTime: deltaTime)
+
         renderEncoder?.endEncoding()
         commandBuffer?.present(drawable)
         commandBuffer?.commit()

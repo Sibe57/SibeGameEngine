@@ -10,7 +10,7 @@ import MetalKit
 class Player: GameObject {
     
     init() {
-        super.init(meshType: .quadCustom)
+        super.init(meshType: .triangleCustom)
     }
 
 }
