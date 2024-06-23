@@ -12,15 +12,15 @@ struct BaseView: NSViewRepresentable {
     typealias NSViewType = MTKView
     
     
-    func makeCoordinator() -> EngineRender {
-        EngineRender(self)
+    func makeCoordinator() -> GameViewDelegate {
+        GameViewDelegate(self)
     }
     
     func makeNSView(context: NSViewRepresentableContext<BaseView>) -> MTKView {
         let mtkView = MTKView()
         
-        mtkView.clearColor = MTLClearColor(red: 0.43, green: 0.73, blue: 0.35, alpha: 1)
-        mtkView.colorPixelFormat = .bgra8Unorm
+        mtkView.clearColor = Preferences.clearColor
+        mtkView.colorPixelFormat = Preferences.mainPixelFormat
         
         mtkView.delegate = context.coordinator
         mtkView.preferredFramesPerSecond = 60
@@ -30,9 +30,8 @@ struct BaseView: NSViewRepresentable {
             mtkView.device = metalDevice
         }
         
-        mtkView.framebufferOnly = false
+        mtkView.framebufferOnly = true
         mtkView.drawableSize = mtkView.frame.size
-        mtkView.isPaused = false
         
         return mtkView
     }
