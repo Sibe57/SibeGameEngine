@@ -7,11 +7,13 @@
 
 import MetalKit
 
-enum RenderPipelineStateType {
-    case basic
-}
 
 class RenderPipelineStateLibrary {
+    
+    enum RenderPipelineStateType {
+        case basic
+    }
+    
     private static var renderPipelineStates: [RenderPipelineStateType: RenderPipelineState] = .init()
     
     static func initialize() {

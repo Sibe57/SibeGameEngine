@@ -7,11 +7,13 @@
 
 import MetalKit
 
-enum RenderPipelineDescriptorType {
-    case basic
-}
 
 class RenderPipelineDescriptorLibrary {
+    
+    enum RenderPipelineDescriptorType {
+        case basic
+    }
+    
     private static var renderPipelineDescriptors: [RenderPipelineDescriptorType : RenderPipelineDescriptor] = [:]
     
     static func initialize() {

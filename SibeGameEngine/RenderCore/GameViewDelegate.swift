@@ -16,29 +16,19 @@ struct Vertex {
 final class GameViewDelegate: NSObject, MTKViewDelegate {
     
     let parent: BaseView
-    
-    let vertexis: [Vertex] = [
-        .init(position: .init(0, 1, 0), color: .init(0, 1, 1, 1)),
-        .init(position: .init(-1, -1, 0), color: .init(1, 1, 0, 1)),
-        .init(position: .init(1, -1, 0), color: .init(1, 0, 1, 1))
-    ]
-    
-    var vertexBuffer: MTLBuffer!
-
+    var gameObjects: [Node] = .init()
     
     init(_ parent: BaseView) {
-        self.parent = parent
-        
         Engine.start()
         
-        super.init()
+        self.parent = parent
         
-        createBuffer()
+        gameObjects.append(Player())
+        
+        super.init()
     }
     
-    func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
-        
-    }
+    func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) { }
     
     func draw(in view: MTKView) {
         guard let drawable  = view.currentDrawable else { return }
@@ -47,20 +37,13 @@ final class GameViewDelegate: NSObject, MTKViewDelegate {
         
         let renderPassDescriptor = view.currentRenderPassDescriptor
         let renderEncoder = commandBuffer?.makeRenderCommandEncoder(descriptor: renderPassDescriptor!)
-        renderEncoder?.setRenderPipelineState(RenderPipelineStateLibrary.pipelineState(.basic))
         
-        renderEncoder?.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
-        renderEncoder?.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: 3)
-        
+        for gameObject in gameObjects {
+            gameObject.render(renderEncoder: renderEncoder!)
+        }
         
         renderEncoder?.endEncoding()
         commandBuffer?.present(drawable)
         commandBuffer?.commit()
-    }
-    
-    private func createBuffer() {
-        vertexBuffer = Engine.device.makeBuffer(
-            bytes: vertexis, length: MemoryLayout<Vertex>.stride * vertexis.count
-        )
     }
 }

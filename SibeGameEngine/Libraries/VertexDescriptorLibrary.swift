@@ -7,11 +7,13 @@
 
 import MetalKit
 
-enum VertexDescriptorType {
-    case basic
-}
 
 class VertexDescriptorLibrary {
+    
+    enum VertexDescriptorType {
+        case basic
+    }
+    
     private static var vertexDescriptors: [VertexDescriptorType: VertexDescriptor] = .init()
     
     static func initialize() {
