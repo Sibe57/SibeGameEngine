@@ -14,13 +14,17 @@ struct Vertex {
 }
 
 final class GameViewDelegate: NSObject, MTKViewDelegate {
+    static var viewSize: Float2 = .zero
+    
     init(_ parent: BaseView) {
         Engine.start()
         
         super.init()
     }
     
-    func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) { }
+    func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
+        Self.viewSize = .init(Float(size.width), Float(size.height))
+    }
     
     func draw(in view: MTKView) {
         firstVertexSet = true
