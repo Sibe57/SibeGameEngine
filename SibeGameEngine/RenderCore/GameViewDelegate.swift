@@ -15,6 +15,9 @@ struct Vertex {
 
 final class GameViewDelegate: NSObject, MTKViewDelegate {
     static var viewSize: Float2 = .zero
+    static var aspectRatio: Float {
+        viewSize.x / viewSize.y
+    }
     
     init(_ parent: BaseView) {
         Engine.start()
@@ -28,6 +31,7 @@ final class GameViewDelegate: NSObject, MTKViewDelegate {
     
     func draw(in view: MTKView) {
         firstVertexSet = true
+        view.depthStencilPixelFormat = Preferences.mainDepthPixelFormat
         guard let drawable  = view.currentDrawable else { return }
         
         let commandBuffer = Engine.commandQueue.makeCommandBuffer()

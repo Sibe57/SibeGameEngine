@@ -33,6 +33,8 @@ class Preferences {
     
     static var mainPixelFormat: MTLPixelFormat = MTLPixelFormat.bgra8Unorm
     
+    static var mainDepthPixelFormat: MTLPixelFormat = .depth32Float
+    
     static var startingSceneType: SceneManager.SceneType = .sandbox
     
 }

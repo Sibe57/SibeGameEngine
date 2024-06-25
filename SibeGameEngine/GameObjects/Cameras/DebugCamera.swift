@@ -5,12 +5,16 @@
 //  Created by Eronin Fedor NP on 24.06.2024.
 //
 
-import Foundation
+import MetalKit
 
 class DebugCamera: Camera {
     var cameraType: CameraType = .debug
     
     var position: Float3 = .zero
+    
+    var projectionMatrix: matrix_float4x4 {
+        return matrix_float4x4.perspective(fov: 45, aspentRatio: GameViewDelegate.aspectRatio, near: 0.01, far: 1000)
+    }
     
     func update(deltaTime: Float) {
         if Keyboard.isKeyPressed(.leftArrow) {

@@ -78,4 +78,32 @@ extension matrix_float4x4 {
         
         self = matrix_multiply(self, translationMatrix)
     }
+    
+    static func perspective(fov: Float, aspentRatio: Float, near: Float, far: Float) -> matrix_float4x4 {
+        let fov = fov.toRadians
+        
+        let t: Float = tan(fov / 2)
+        
+        let x: Float = 1 / (aspentRatio * t)
+        let y: Float = 1 / t
+        let z: Float = -((far + near) / (far - near))
+        let w: Float = -((2 * far * near) / (far - near))
+        
+        return matrix_float4x4(
+            Float4(x, 0, 0, 0),
+            Float4(0, y, 0, 0),
+            Float4(0, 0, z, -1),
+            Float4(0, 0, w, 0)
+        )
+    }
+}
+
+extension Float {
+    var toRadians: Float {
+        return self / 180 * .pi
+    }
+    
+    var toDegrees: Float {
+        return self * (180 / .pi)
+    }
 }

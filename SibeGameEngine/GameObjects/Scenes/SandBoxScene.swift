@@ -9,25 +9,19 @@ import MetalKit
 
 class SandBoxScene: CustomScene {
     let debugCamera = DebugCamera()
+    let cube = Cube()
     override func buildScene() {
         addCamera(debugCamera)
-        let count: Int = 10
-        for y in -count..<count {
-            for x in -count..<count {
-                let pointer = Pointer(camera: debugCamera)
+        debugCamera.position.z = 5
                 
-                pointer.position.y = (Float(y) + 0.5) / Float(count)
-                pointer.position.x = (Float(x) + 0.5) / Float(count)
-                pointer.scale = .init(repeating: 1 / Float(2 * count))
+        addChild(cube)
                 
-                addChild(pointer)
-                
-            }
-        }
     }
     
     override func update(deltaTime: Float) {
         print(Mouse.getMouseViewportPosition())
+        cube.rotation.x += deltaTime
+        cube.rotation.y += deltaTime
         
         super.update(deltaTime: deltaTime)
     }

@@ -13,6 +13,7 @@ class MeshLibrary {
     enum MeshType {
         case triangleCustom
         case quadCustom
+        case cube
     }
     
     static private var meshes: [MeshType: Mesh] = .init()
@@ -24,6 +25,7 @@ class MeshLibrary {
     private static func createDefaultMeshes() {
         meshes[.triangleCustom] = TriangleMesh()
         meshes[.quadCustom] = QuadMesh()
+        meshes[.cube] = CubeMesh()
     }
     
     static func mesh(_ meshType: MeshType) -> Mesh {
@@ -78,6 +80,60 @@ final class QuadMesh: CustomMesh {
             .init(position: .init(1, 1, 0), color: .init(0, 1, 1, 1)),
             .init(position: .init(-1, -1, 0), color: .init(1, 0, 1, 1)),
             .init(position: .init(1, -1, 0), color: .init(1, 1, 0, 1))
+        ]
+    }
+}
+
+final class CubeMesh: CustomMesh {
+    override func createVertexies() {
+        self.vertexis = [
+            //Left
+            Vertex(position: Float3(-1.0,-1.0,-1.0), color: Float4(1.0, 0.5, 0.0, 1.0)),
+            Vertex(position: Float3(-1.0,-1.0, 1.0), color: Float4(1.0, 0.5, 0.0, 1.0)),
+            Vertex(position: Float3(-1.0, 1.0, 1.0), color: Float4(1.0, 0.5, 0.0, 1.0)),
+            Vertex(position: Float3(-1.0,-1.0,-1.0), color: Float4(1.0, 0.5, 0.0, 1.0)),
+            Vertex(position: Float3(-1.0, 1.0, 1.0), color: Float4(1.0, 0.5, 0.0, 1.0)),
+            Vertex(position: Float3(-1.0, 1.0,-1.0), color: Float4(1.0, 0.5, 0.0, 1.0)),
+            
+            //RIGHT
+            Vertex(position: Float3( 1.0, 1.0, 1.0), color: Float4(1.0, 0.0, 0.5, 1.0)),
+            Vertex(position: Float3( 1.0,-1.0,-1.0), color: Float4(1.0, 0.0, 0.5, 1.0)),
+            Vertex(position: Float3( 1.0, 1.0,-1.0), color: Float4(1.0, 0.0, 0.5, 1.0)),
+            Vertex(position: Float3( 1.0,-1.0,-1.0), color: Float4(1.0, 0.0, 0.5, 1.0)),
+            Vertex(position: Float3( 1.0, 1.0, 1.0), color: Float4(1.0, 0.0, 0.5, 1.0)),
+            Vertex(position: Float3( 1.0,-1.0, 1.0), color: Float4(1.0, 0.0, 0.5, 1.0)),
+            
+            //TOP
+            Vertex(position: Float3( 1.0, 1.0, 1.0), color: Float4(1.0, 0.0, 0.0, 1.0)),
+            Vertex(position: Float3( 1.0, 1.0,-1.0), color: Float4(1.0, 0.0, 0.0, 1.0)),
+            Vertex(position: Float3(-1.0, 1.0,-1.0), color: Float4(1.0, 0.0, 0.0, 1.0)),
+            Vertex(position: Float3( 1.0, 1.0, 1.0), color: Float4(1.0, 0.0, 0.0, 1.0)),
+            Vertex(position: Float3(-1.0, 1.0,-1.0), color: Float4(1.0, 0.0, 0.0, 1.0)),
+            Vertex(position: Float3(-1.0, 1.0, 1.0), color: Float4(1.0, 0.0, 0.0, 1.0)),
+            
+            //BOTTOM
+            Vertex(position: Float3( 1.0,-1.0, 1.0), color: Float4(1.0, 0.5, 0.0, 1.0)),
+            Vertex(position: Float3(-1.0,-1.0,-1.0), color: Float4(0.5, 1.0, 0.0, 1.0)),
+            Vertex(position: Float3( 1.0,-1.0,-1.0), color: Float4(0.0, 0.0, 1.0, 1.0)),
+            Vertex(position: Float3( 1.0,-1.0, 1.0), color: Float4(1.0, 1.0, 0.5, 1.0)),
+            Vertex(position: Float3(-1.0,-1.0, 1.0), color: Float4(0.0, 1.0, 1.0, 1.0)),
+            Vertex(position: Float3(-1.0,-1.0,-1.0), color: Float4(1.0, 0.5, 1.0, 1.0)),
+            
+            //BACK
+            Vertex(position: Float3( 1.0, 1.0,-1.0), color: Float4(1.0, 0.5, 0.0, 1.0)),
+            Vertex(position: Float3(-1.0,-1.0,-1.0), color: Float4(0.5, 1.0, 0.0, 1.0)),
+            Vertex(position: Float3(-1.0, 1.0,-1.0), color: Float4(0.0, 0.0, 1.0, 1.0)),
+            Vertex(position: Float3( 1.0, 1.0,-1.0), color: Float4(1.0, 1.0, 0.0, 1.0)),
+            Vertex(position: Float3( 1.0,-1.0,-1.0), color: Float4(0.0, 1.0, 1.0, 1.0)),
+            Vertex(position: Float3(-1.0,-1.0,-1.0), color: Float4(1.0, 0.5, 1.0, 1.0)),
+            
+            //FRONT
+            Vertex(position: Float3(-1.0, 1.0, 1.0), color: Float4(1.0, 0.0, 1.0, 1.0)),
+            Vertex(position: Float3(-1.0,-1.0, 1.0), color: Float4(1.0, 0.0, 1.0, 1.0)),
+            Vertex(position: Float3( 1.0,-1.0, 1.0), color: Float4(1.0, 0.0, 1.0, 1.0)),
+            Vertex(position: Float3( 1.0, 1.0, 1.0), color: Float4(1.0, 0.0, 1.0, 1.0)),
+            Vertex(position: Float3(-1.0, 1.0, 1.0), color: Float4(1.0, 0.0, 1.0, 1.0)),
+            Vertex(position: Float3( 1.0,-1.0, 1.0), color: Float4(1.0, 0.0, 1.0, 1.0))
         ]
     }
 }

@@ -47,6 +47,7 @@ public struct BasicRenderPipelineDescriptor: RenderPipelineDescriptor {
         descriptor.vertexFunction = ShaderLibrary.vertex(.basic)
         descriptor.fragmentFunction = ShaderLibrary.fragment(.basic)
         descriptor.colorAttachments[0].pixelFormat = Preferences.mainPixelFormat
+        descriptor.depthAttachmentPixelFormat = Preferences.mainDepthPixelFormat
         
         self.renderPipelineDescriptor = descriptor
     }

@@ -29,6 +29,8 @@
 		8424DEA32C28C72F009F73F1 /* Keycode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424DEA22C28C72F009F73F1 /* Keycode.swift */; };
 		8424DEA52C28CC3D009F73F1 /* Mouse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424DEA42C28CC3D009F73F1 /* Mouse.swift */; };
 		8424DEA72C28D077009F73F1 /* Typealias.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424DEA62C28D077009F73F1 /* Typealias.swift */; };
+		847400C92C2B51FF0021E3DB /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847400C82C2B51FF0021E3DB /* Cube.swift */; };
+		847400CB2C2B5A890021E3DB /* DepthStencilStateLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847400CA2C2B5A890021E3DB /* DepthStencilStateLibrary.swift */; };
 		84F85C332C2726AA00B7D56A /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F85C322C2726AA00B7D56A /* Engine.swift */; };
 		84F85C352C2728BD00B7D56A /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F85C342C2728BD00B7D56A /* Preferences.swift */; };
 		84F85C372C272A5000B7D56A /* ShaderLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F85C362C272A5000B7D56A /* ShaderLibrary.swift */; };
@@ -64,6 +66,8 @@
 		8424DEA22C28C72F009F73F1 /* Keycode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keycode.swift; sourceTree = "<group>"; };
 		8424DEA42C28CC3D009F73F1 /* Mouse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mouse.swift; sourceTree = "<group>"; };
 		8424DEA62C28D077009F73F1 /* Typealias.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealias.swift; sourceTree = "<group>"; };
+		847400C82C2B51FF0021E3DB /* Cube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
+		847400CA2C2B5A890021E3DB /* DepthStencilStateLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepthStencilStateLibrary.swift; sourceTree = "<group>"; };
 		84F85C322C2726AA00B7D56A /* Engine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Engine.swift; sourceTree = "<group>"; };
 		84F85C342C2728BD00B7D56A /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		84F85C362C272A5000B7D56A /* ShaderLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShaderLibrary.swift; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				8424DE902C283388009F73F1 /* Renderable.swift */,
+				847400C82C2B51FF0021E3DB /* Cube.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -222,6 +227,7 @@
 				84F85C392C272F9100B7D56A /* VertexDescriptorLibrary.swift */,
 				8424DE822C280AB5009F73F1 /* RenderPipelineDescriptorLibrary.swift */,
 				8424DE842C280D47009F73F1 /* RenderPipelineStateLibrary.swift */,
+				847400CA2C2B5A890021E3DB /* DepthStencilStateLibrary.swift */,
 			);
 			path = Libraries;
 			sourceTree = "<group>";
@@ -307,7 +313,9 @@
 			files = (
 				8424DE912C283388009F73F1 /* Renderable.swift in Sources */,
 				84F85C3A2C272F9100B7D56A /* VertexDescriptorLibrary.swift in Sources */,
+				847400CB2C2B5A890021E3DB /* DepthStencilStateLibrary.swift in Sources */,
 				84183BE42C2613BF00B6D94F /* BaseView.swift in Sources */,
+				847400C92C2B51FF0021E3DB /* Cube.swift in Sources */,
 				8424DE972C28AAB5009F73F1 /* Scene.swift in Sources */,
 				84F85C3C2C27315100B7D56A /* StringExtensions.swift in Sources */,
 				930224DD2C29838200D4D2AC /* DebugCamera.swift in Sources */,
@@ -463,12 +471,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SibeGameEngine/SibeGameEngine.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SibeGameEngine/Preview Content\"";
-				DEVELOPMENT_TEAM = 8SAAVB2LRU;
+				DEVELOPMENT_TEAM = R82749YG66;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -492,12 +500,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SibeGameEngine/SibeGameEngine.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SibeGameEngine/Preview Content\"";
-				DEVELOPMENT_TEAM = 8SAAVB2LRU;
+				DEVELOPMENT_TEAM = R82749YG66;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
