@@ -29,7 +29,7 @@ class GameObject: Node {
 
 extension GameObject: Renderable {
     func doRender(_ renderCommandEncoder: any MTLRenderCommandEncoder) {
-        renderCommandEncoder.setVertexBytes(&modelConstant, length: MemoryLayout<ModelConstants>.stride, index: 1)
+        renderCommandEncoder.setVertexBytes(&modelConstant, length: MemoryLayout<ModelConstants>.stride, index: 2)
         
         if firstVertexSet {
             renderCommandEncoder.setRenderPipelineState(RenderPipelineStateLibrary.pipelineState(.basic))
@@ -44,4 +44,8 @@ extension GameObject: Renderable {
 
 struct ModelConstants {
     var modelMatrix = matrix_identity_float4x4
+}
+
+struct SceneConstants {
+    var viewMatrix = matrix_identity_float4x4
 }

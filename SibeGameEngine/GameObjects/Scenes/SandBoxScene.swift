@@ -8,17 +8,19 @@
 import MetalKit
 
 class SandBoxScene: CustomScene {
+    let debugCamera = DebugCamera()
     override func buildScene() {
+        addCamera(debugCamera)
         let count: Int = 10
         for y in -count..<count {
             for x in -count..<count {
-                let player = Player()
+                let pointer = Pointer(camera: debugCamera)
                 
-                player.position.y = (Float(y) + 0.5) / Float(count)
-                player.position.x = (Float(x) + 0.5) / Float(count)
-                player.scale = .init(repeating: 1 / Float(2 * count))
+                pointer.position.y = (Float(y) + 0.5) / Float(count)
+                pointer.position.x = (Float(x) + 0.5) / Float(count)
+                pointer.scale = .init(repeating: 1 / Float(2 * count))
                 
-                addChild(player)
+                addChild(pointer)
                 
             }
         }

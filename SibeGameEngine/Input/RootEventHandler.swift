@@ -49,14 +49,31 @@ class RootEventHandler {
         //Mouse cursor
         NSEvent.addLocalMonitorForEvents(matching: .mouseMoved) { event in
             guard event.window != nil else { return event }
-            let x = Float(event.locationInWindow.x)
-            let y = Float(event.locationInWindow.y)
-            Mouse.setOverallMousePosition(position: .init(x, y))
+     
+            Mouse.setMousePositionChange(
+                overallPosition: event.locationInWindow,
+                deltaPosition: .init(Float(event.deltaX), Float(event.deltaY))
+            )
             
             return event
         }
         
-        //надо дописать мункции мыши
+        NSEvent.addLocalMonitorForEvents(matching: .scrollWheel) { event in
+            Mouse.scrollMouse(deltaY: Float(event.deltaY))
+            
+            return event
+        }
         
+        NSEvent.addLocalMonitorForEvents(matching: .leftMouseDragged) { event in
+            Mouse.setOverallMousePosition(position: event.locationInWindow)
+            
+            return event
+        }
+        
+        NSEvent.addLocalMonitorForEvents(matching: .rightMouseDragged) { event in
+            Mouse.setOverallMousePosition(position: event.locationInWindow)
+            
+            return event
+        }
     }
 }

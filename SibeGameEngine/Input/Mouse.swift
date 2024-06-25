@@ -30,12 +30,18 @@ class Mouse {
         return mouseButtonStates[button.rawValue, default: false]
     }
     
-    static func setOverallMousePosition(position: Float2) {
-        self.overalMousePosition = position
+    static func setOverallMousePosition(position: CGPoint) {
+        let x = Float(position.x)
+        let y = Float(position.y)
+        
+        self.overalMousePosition = .init(x, y)
     }
     
-    static func setMousePositionChange(overallPosition: Float2, deltaPosition: Float2) {
-        self.overalMousePosition = overallPosition
+    static func setMousePositionChange(overallPosition: CGPoint, deltaPosition: Float2) {
+        let x = Float(overallPosition.x)
+        let y = Float(overallPosition.y)
+        
+        self.overalMousePosition = .init(x, y)
         self.mousePositionDelta += deltaPosition
     }
     
