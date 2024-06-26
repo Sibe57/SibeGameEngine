@@ -18,16 +18,16 @@ class DebugCamera: Camera {
     
     func update(deltaTime: Float) {
         if Keyboard.isKeyPressed(.leftArrow) {
-            self.position.x -= deltaTime
+            self.position.x -= deltaTime * 20
         }
         if Keyboard.isKeyPressed(.rightArrow) {
-            self.position.x += deltaTime
+            self.position.x += deltaTime * 20
         }
         if Keyboard.isKeyPressed(.upArrow) {
-            self.position.y += deltaTime
+            self.position.y += deltaTime * 20
         }
         if Keyboard.isKeyPressed(.downArrow) {
-            self.position.y -= deltaTime
+            self.position.y -= deltaTime * 20
         }
     }
 }

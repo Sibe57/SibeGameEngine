@@ -11,6 +11,7 @@ var firstVertexSet: Bool = true
 class GameObject: Node {
     
     var modelConstant = ModelConstants()
+    private var material = CustomMaterial()
     
     let mesh: Mesh
     
@@ -35,19 +36,18 @@ extension GameObject: Renderable {
         if firstVertexSet {
             renderCommandEncoder.setRenderPipelineState(RenderPipelineStateLibrary.pipelineState(.basic))
             
-            renderCommandEncoder.setVertexBuffer(mesh.vertexBuffer, offset: 0, index: 0)
-            
             firstVertexSet = false
         }
-        renderCommandEncoder.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: mesh.vertexCount)
+        
+        renderCommandEncoder.setFragmentBytes(&material, length: MemoryLayout<CustomMaterial>.stride, index: 0)
+        
+        mesh.drawPrimitives(renderCommandEncoder)
     }
 }
 
-struct ModelConstants {
-    var modelMatrix = matrix_identity_float4x4
-}
-
-struct SceneConstants {
-    var viewMatrix = matrix_identity_float4x4
-    var projectionMatrix = matrix_identity_float4x4
+extension GameObject {
+    func setColor(_ color: Float4) {
+        self.material.color = color
+        self.material.useMaterialColor = true
+    }
 }

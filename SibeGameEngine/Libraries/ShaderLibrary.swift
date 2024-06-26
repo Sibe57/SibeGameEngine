@@ -28,9 +28,12 @@ private final class BasicVertexShader: Shader { }
 
 private final class BasicFragmentShader: Shader { }
 
+private final class InstancedVertexShader: Shader { }
+
 final class ShaderLibrary {
     enum VertexShaderType {
         case basic
+        case instanced
     }
 
     enum FragmentShaderType {
@@ -58,5 +61,7 @@ final class ShaderLibrary {
     private static func createDefaultShaders() {
         vertexShaders[.basic] = BasicVertexShader()
         fragmentShaders[.basic] = BasicFragmentShader()
+        vertexShaders[.instanced] = InstancedVertexShader()
+        
     }
 }

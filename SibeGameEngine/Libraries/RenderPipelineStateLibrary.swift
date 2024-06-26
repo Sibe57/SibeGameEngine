@@ -12,6 +12,7 @@ class RenderPipelineStateLibrary {
     
     enum RenderPipelineStateType {
         case basic
+        case instanced
     }
     
     private static var renderPipelineStates: [RenderPipelineStateType: RenderPipelineState] = .init()
@@ -22,6 +23,7 @@ class RenderPipelineStateLibrary {
 
     private static func createDefaultRenderPipelineState() {
         renderPipelineStates[.basic] = BasicRenderPipelineState()
+        renderPipelineStates[.instanced] = InstancedRenderPipelineState()
     }
 
     static func pipelineState(_ renderPipelineStateType: RenderPipelineStateType) -> MTLRenderPipelineState {
@@ -44,6 +46,25 @@ struct BasicRenderPipelineState: RenderPipelineState {
         do {
             self.renderPipelineState = try Engine.device.makeRenderPipelineState(
                 descriptor: RenderPipelineDescriptorLibrary.descriptor(.basic)
+            )
+        } catch {
+            print(error)
+            
+            fatalError()
+        }
+    }
+}
+
+struct InstancedRenderPipelineState: RenderPipelineState {
+    let name: String
+    let renderPipelineState: any MTLRenderPipelineState
+    
+    init() {
+        self.name = String(describing: Self.self)
+        
+        do {
+            self.renderPipelineState = try Engine.device.makeRenderPipelineState(
+                descriptor: RenderPipelineDescriptorLibrary.descriptor(.instanced)
             )
         } catch {
             print(error)

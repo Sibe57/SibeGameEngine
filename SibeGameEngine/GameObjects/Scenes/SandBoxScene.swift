@@ -9,19 +9,27 @@ import MetalKit
 
 class SandBoxScene: CustomScene {
     let debugCamera = DebugCamera()
-    let cube = Cube()
+    let cubeCollection = CubeCollections(cubesWide: 20, cubesHigh: 20, cubesBack: 20)
+    let cubeCollection2 = CubeCollections(cubesWide: 20, cubesHigh: 20, cubesBack: 20)
+    
     override func buildScene() {
         addCamera(debugCamera)
-        debugCamera.position.z = 5
+        debugCamera.position.z = 100
                 
-        addChild(cube)
+        addCubes()
                 
+    }
+
+    func addCubes() {
+        addChild(cubeCollection)
+        cubeCollection.position.x = -16
+        cubeCollection2.position.x = 16
+        addChild(cubeCollection2)
     }
     
     override func update(deltaTime: Float) {
-        print(Mouse.getMouseViewportPosition())
-        cube.rotation.x += deltaTime
-        cube.rotation.y += deltaTime
+        cubeCollection.rotation.z += deltaTime
+        cubeCollection2.rotation.z -= deltaTime
         
         super.update(deltaTime: deltaTime)
     }

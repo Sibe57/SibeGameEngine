@@ -12,6 +12,7 @@ class RenderPipelineDescriptorLibrary {
     
     enum RenderPipelineDescriptorType {
         case basic
+        case instanced
     }
     
     private static var renderPipelineDescriptors: [RenderPipelineDescriptorType : RenderPipelineDescriptor] = [:]
@@ -22,6 +23,7 @@ class RenderPipelineDescriptorLibrary {
 
     private static func createDefaultRenderPipelineDescriptors() {
         renderPipelineDescriptors[.basic] = BasicRenderPipelineDescriptor()
+        renderPipelineDescriptors[.instanced] = InstancedRenderPipelineDescriptor()
     }
     
     public static func descriptor(_ renderPipelineDescriptorType: RenderPipelineDescriptorType) -> MTLRenderPipelineDescriptor {
@@ -45,6 +47,25 @@ public struct BasicRenderPipelineDescriptor: RenderPipelineDescriptor {
         
         descriptor.vertexDescriptor = VertexDescriptorLibrary.descriptor(.basic)
         descriptor.vertexFunction = ShaderLibrary.vertex(.basic)
+        descriptor.fragmentFunction = ShaderLibrary.fragment(.basic)
+        descriptor.colorAttachments[0].pixelFormat = Preferences.mainPixelFormat
+        descriptor.depthAttachmentPixelFormat = Preferences.mainDepthPixelFormat
+        
+        self.renderPipelineDescriptor = descriptor
+    }
+}
+
+public struct InstancedRenderPipelineDescriptor: RenderPipelineDescriptor {
+    let name: String
+    let renderPipelineDescriptor: MTLRenderPipelineDescriptor
+    
+    init() {
+        self.name = String(describing: Self.self)
+        
+        let descriptor = MTLRenderPipelineDescriptor()
+        
+        descriptor.vertexDescriptor = VertexDescriptorLibrary.descriptor(.basic)
+        descriptor.vertexFunction = ShaderLibrary.vertex(.instanced)
         descriptor.fragmentFunction = ShaderLibrary.fragment(.basic)
         descriptor.colorAttachments[0].pixelFormat = Preferences.mainPixelFormat
         descriptor.depthAttachmentPixelFormat = Preferences.mainDepthPixelFormat
